@@ -2,7 +2,7 @@ const express = require('express');
 const http = require('http');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const env = require('env').config();
+const env = require('dotenv').config();
 const { getWhois, extractDomain } = require('./src/getWhois');
 
 const app = express();
