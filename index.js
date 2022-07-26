@@ -2,6 +2,7 @@ const express = require('express');
 const http = require('http');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const env = require('env').config();
 const { getWhois, extractDomain } = require('./src/getWhois');
 
 const app = express();
@@ -22,6 +23,8 @@ app.get('/', (req, res) => res.json('Hello World!'));
 
 // app.use('/', (req, res) => res.sendFile(path.resolve(__dirname, 'client', 'index.html')));
 
-server.listen(8080, () => {
-    console.log('server running on port 8080');
+const port = process.env.PORT || 3000;
+
+server.listen(port, () => {
+    console.log('server running on port ', port);
 })
