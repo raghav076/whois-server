@@ -106,7 +106,9 @@ const getWhois = async (req, res) => {
         whois.lookup(host, (err, d) => {
             let result = {URL: req.query.url}
             result = { ...result, ...formatWhois(d, host) };
+            console.log('raw data', result);
             result = filterResult(result);
+            console.log('fitered result', result);
             res.json(result);
         })
         // if (!data.domainName) {
