@@ -3,7 +3,7 @@ const http = require('http');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const env = require('dotenv').config();
-const { getWhois, extractDomain } = require('./src/getWhois');
+const { getWhois, parseUrl } = require('./src/getWhois');
 
 const app = express();
 const jsonParser = bodyParser.json();
@@ -18,7 +18,7 @@ app.use(cors(corsOption));
 
 const server = http.createServer(app);
 
-app.get('/whois', extractDomain, getWhois);
+app.get('/whois', parseUrl, getWhois);
 app.get('/', (req, res) => res.json('Hello World!'));
 
 // app.use('/', (req, res) => res.sendFile(path.resolve(__dirname, 'client', 'index.html')));
